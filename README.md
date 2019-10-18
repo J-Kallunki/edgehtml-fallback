@@ -1,2 +1,4 @@
 # edgehtml-fallback
-Default fallbacking for EdgeHTML based browser
+Default fallbacking for IE and EdgeHTML based browser
+
+- Remove all CSS
