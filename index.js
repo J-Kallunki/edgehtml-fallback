@@ -12,4 +12,16 @@ function detectIeEdge() {
   return false;
 }
 
+function ifNodeList(element) {
+  if (
+    typeof element.length === 'number' &&
+    typeof element.item !== 'undefined' &&
+    typeof element.nextNode === 'function' &&
+    typeof element.reset === 'function'
+  ) {
+    return true;
+  }
+  return false;
+}
+
 module.exports.detectEdgeHtml = detectIeEdge;
