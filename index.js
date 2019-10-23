@@ -24,4 +24,11 @@ function ifNodeList(element) {
   return false;
 }
 
+function ifDevelopEnvironment() {
+  if (process !== undefined && process.env !== undefined && process.env.NODE_ENV !== 'production') {
+    return true;
+  }
+  return false;
+}
+
 module.exports.detectEdgeHtml = detectIeEdge;
