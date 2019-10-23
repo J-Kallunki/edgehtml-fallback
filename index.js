@@ -31,4 +31,14 @@ function ifDevelopEnvironment() {
   return false;
 }
 
+function getElement(el) {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+  if (el === undefined || el === null) {
+    return window.document;
+  }
+  return el;
+}
+
 module.exports.detectEdgeHtml = detectIeEdge;
