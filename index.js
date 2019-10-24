@@ -111,4 +111,14 @@ function getElement(el) {
   return el;
 }
 
+function fallbackIeEdge(element) {
+  var ieEdge = detectIeEdge();
+  if (ieEdge) {
+    var useElement = getElement(element);
+    removeStyleTags(useElement);
+    removeInlineStyles(useElement);
+  }
+}
+
 module.exports.detectEdgeHtml = detectIeEdge;
+module.exports.fallbackIeEdge = fallbackIeEdge;
