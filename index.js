@@ -66,6 +66,41 @@ function removeStyleTags(element) {
   return true;
 }
 
+function removeStyleAttributes(elements) {
+  if (
+    HTMLCollection.prototype.isPrototypeOf(elements) ||
+    NodeList.prototype.isPrototypeOf(elements) ||
+    ifNodeList(elements)
+  ) {
+    var devEnv = ifDevelopEnvironment();
+    for (var i = 0; i < tags.length; i++) {
+      var el = elements[i];
+      if (devEnv && console !== undefined) {
+        console.log("Removing styles from:", el);
+      }
+      el.removeAttribute('style');
+    }
+    return true;
+  }
+  return false;
+}
+
+function removeInlineStyles(element) {
+  if (element === false || element === undefined || element === null) {
+    return false;
+  }
+  var elements = element.querySelectorAll('[style]');
+  if (elements !== undefined && tags.length > 0) {
+    removeStyleAttributes(elements);
+  } else {
+    var devEnv = ifDevelopEnvironment();
+    if (devEnv && console !== undefined) {
+      console.log("No inline-styles found.");
+    }
+  }
+  return true;
+}
+
 function getElement(el) {
   if (typeof window === 'undefined') {
     return false;
